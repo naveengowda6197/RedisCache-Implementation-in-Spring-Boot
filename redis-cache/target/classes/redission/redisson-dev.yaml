@@ -1,0 +1,2 @@
+singleServerConfig:
+  address: "localhost:6379"
