@@ -22,8 +22,6 @@ import com.example.rediscache.Entity.Book;
 import ch.qos.logback.core.util.Duration;
 
 @SpringBootApplication
-//@EnableCaching
-
 public class RedisCacheApplication {
 
 	public static void main(String[] args) {
