@@ -14,21 +14,16 @@ import com.example.rediscache.Repository.BookRepository;
 
 @Service
 @EnableCaching
-
 public class BookServiceImplementation implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 	
 	
-//	@Autowired
-	//private RedisTemplate<Integer, ?> redisTemplate ;
 	@Override
 	@CacheEvict(allEntries = true,cacheNames = "bookdto")
 	public Book save(Book book) {
 		//redisTemplate.opsForHash().put("books", book.getId(), book);
-		
-		return bookRepository.save(book);
-		
+		return bookRepository.save(book);	
 	}
 
 	
@@ -41,8 +36,7 @@ public class BookServiceImplementation implements BookService {
 		System.out.println(" DB hit ");
 		Book b= bookRepository.getById(id);
 		BookDto bookDto=new BookDto(b.getId(),b.getBookname());
-		return bookDto;
-		
+		return bookDto;	
 	}
 
 	@Override
@@ -52,11 +46,6 @@ public class BookServiceImplementation implements BookService {
 		Integer bookid=book.getId();
 		Book book1=bookRepository.findById(bookid).orElse(null);
 		book1.setBookname(book.getBookname());
-		bookRepository.save(book1);
-		
+		bookRepository.save(book1);	
 	}
-	
-	
-	
-
 }
